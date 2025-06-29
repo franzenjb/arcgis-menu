@@ -63,10 +63,13 @@
       menuContainer.innerHTML = '';
       items.forEach(item => {
         const a = document.createElement('a');
-        a.href = item.url;
-        a.target = '_parent';
         a.textContent = item.title;
         a.className = `button-link ${item.colorClass}`;
+        a.href = "#";
+        a.onclick = (e) => {
+          e.preventDefault();
+          window.top.location.href = item.url;
+        };
         menuContainer.appendChild(a);
       });
     }
