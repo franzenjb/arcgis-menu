@@ -1,15 +1,22 @@
 [
   {
-    "title": "Disaster Dashboard",
-    "url": "https://arcg.is/0abcd"
+    "title": "DR Summary",
+    "url": "https://experience.arcgis.com/experience/1057b83e298b42bf88c9d1f82619d026?page=page_1"
   },
   {
-    "title": "Shelter Map",
-    "url": "https://arcg.is/0wxyz"
+    "title": "DA Counts",
+    "url": "https://experience.arcgis.com/experience/1057b83e298b42bf88c9d1f82619d026?page=page_2"
   },
   {
-    "title": "Damage Assessment Viewer",
-    "url": "https://arcg.is/01234"
+    "title": "Mobile Homes",
+    "url": "https://experience.arcgis.com/experience/1057b83e298b42bf88c9d1f82619d026?page=page_3"
+  },
+  {
+    "title": "Time Analysis",
+    "url": "https://experience.arcgis.com/experience/1057b83e298b42bf88c9d1f82619d026?page=page_4"
+  },
+  {
+    "title": "County View",
+    "url": "https://experience.arcgis.com/experience/1057b83e298b42bf88c9d1f82619d026?page=page_5"
   }
 ]
-
