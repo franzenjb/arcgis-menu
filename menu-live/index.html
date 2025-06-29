@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ArcGIS Menu Test</title>
+  <title>ArcGIS Menu (Live)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -48,43 +48,47 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">ArcGIS Menu Test</h1>
+    <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Live JSON-Driven Menu</h1>
 
     <input type="text" id="searchInput" class="search-input" placeholder="Search menu...">
-
-    <div id="menuButtons">
-      <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-1" 
-         target="_parent" 
-         class="button-link btn-purple">
-         Page 1
-      </a>
-
-      <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-2" 
-         target="_parent" 
-         class="button-link btn-blue">
-         Page 2
-      </a>
-
-      <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-3" 
-         target="_parent" 
-         class="button-link btn-green">
-         Page 3
-      </a>
-    </div>
+    <div id="menuButtons"></div>
   </div>
 
   <script>
+    const menuContainer = document.getElementById('menuButtons');
     const searchInput = document.getElementById('searchInput');
-    const menuButtons = document.querySelectorAll('#menuButtons a');
+    let allItems = [];
+
+    function renderButtons(items) {
+      menuContainer.innerHTML = '';
+      items.forEach(item => {
+        const a = document.createElement('a');
+        a.href = item.url;
+        a.target = '_parent';
+        a.textContent = item.title;
+        a.className = `button-link ${item.colorClass}`;
+        menuContainer.appendChild(a);
+      });
+    }
 
     searchInput.addEventListener('input', () => {
       const term = searchInput.value.toLowerCase();
-      menuButtons.forEach(btn => {
-        const text = btn.textContent.toLowerCase();
-        btn.style.display = text.includes(term) ? 'block' : 'none';
-      });
+      const filtered = allItems.filter(item =>
+        item.title.toLowerCase().includes(term)
+      );
+      renderButtons(filtered);
     });
+
+    fetch('menu.json')
+      .then(res => res.json())
+      .then(data => {
+        allItems = data;
+        renderButtons(data);
+      })
+      .catch(err => {
+        menuContainer.innerHTML = `<p class="text-red-600">Error loading menu.json</p>`;
+        console.error(err);
+      });
   </script>
 </body>
 </html>
-
