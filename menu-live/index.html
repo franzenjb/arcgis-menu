@@ -1,92 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>National Operations Summary</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 2rem;
-        }
-        .menu-container {
-            max-width: 1600px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        .menu-button {
-            display: block;
-            background-color: #003e5c;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 1.25rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            font-size: 1rem;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.2s ease;
-        }
-        .menu-button:hover {
-            background-color: #00547a;
-            transform: translateY(-3px);
-        }
-        h1 {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 2rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArcGIS Menu Test</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    .btn {
+      @apply block text-white font-semibold py-3 px-4 rounded text-sm transition duration-150 ease-in-out text-center;
+    }
+    .btn-purple { background-color: #6b21a8; }
+    .btn-blue { background-color: #1e40af; }
+    .btn-green { background-color: #166534; }
+
+    .btn-purple:hover { background-color: #7e22ce; }
+    .btn-blue:hover { background-color: #2563eb; }
+    .btn-green:hover { background-color: #16a34a; }
+
+    .search-input {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
-<body>
-    <h1>National Operations Summary</h1>
-    <div class="menu-container">
-        <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-1" target="_blank" class="menu-button">Map Viewer</a>
-        <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-2" target="_blank" class="menu-button">Dashboard</a>
-        <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-3" target="_blank" class="menu-button">National Weather</a>
-        <a href="#" target="_blank" class="menu-button">Category 4</a>
-        <a href="#" target="_blank" class="menu-button">Category 5</a>
-        <a href="#" target="_blank" class="menu-button">Category 6</a>
-        <a href="#" target="_blank" class="menu-button">Category 7</a>
-        <a href="#" target="_blank" class="menu-button">Category 8</a>
-        <a href="#" target="_blank" class="menu-button">Category 9</a>
-        <a href="#" target="_blank" class="menu-button">Category 10</a>
-        <a href="#" target="_blank" class="menu-button">Category 11</a>
-        <a href="#" target="_blank" class="menu-button">Category 12</a>
-        <a href="#" target="_blank" class="menu-button">Category 13</a>
-        <a href="#" target="_blank" class="menu-button">Category 14</a>
-        <a href="#" target="_blank" class="menu-button">Category 15</a>
-        <a href="#" target="_blank" class="menu-button">Category 16</a>
-        <a href="#" target="_blank" class="menu-button">Category 17</a>
-        <a href="#" target="_blank" class="menu-button">Category 18</a>
-        <a href="#" target="_blank" class="menu-button">Category 19</a>
-        <a href="#" target="_blank" class="menu-button">Category 20</a>
-        <a href="#" target="_blank" class="menu-button">Category 21</a>
-        <a href="#" target="_blank" class="menu-button">Category 22</a>
-        <a href="#" target="_blank" class="menu-button">Category 23</a>
-        <a href="#" target="_blank" class="menu-button">Category 24</a>
-        <a href="#" target="_blank" class="menu-button">Category 25</a>
-        <a href="#" target="_blank" class="menu-button">Category 26</a>
-        <a href="#" target="_blank" class="menu-button">Category 27</a>
-        <a href="#" target="_blank" class="menu-button">Category 28</a>
-        <a href="#" target="_blank" class="menu-button">Category 29</a>
-        <a href="#" target="_blank" class="menu-button">Category 30</a>
-        <a href="#" target="_blank" class="menu-button">Category 31</a>
-        <a href="#" target="_blank" class="menu-button">Category 32</a>
-        <a href="#" target="_blank" class="menu-button">Category 33</a>
-        <a href="#" target="_blank" class="menu-button">Category 34</a>
-        <a href="#" target="_blank" class="menu-button">Category 35</a>
-        <a href="#" target="_blank" class="menu-button">Category 36</a>
-        <a href="#" target="_blank" class="menu-button">Category 37</a>
-        <a href="#" target="_blank" class="menu-button">Category 38</a>
-        <a href="#" target="_blank" class="menu-button">Category 39</a>
+<body class="p-4">
+  <div class="max-w-screen-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold text-red-900 mb-4">ArcGIS Menu Test</h1>
+
+    <!-- Search bar -->
+    <input type="text" id="searchInput" class="search-input" placeholder="Search menu..."/>
+
+    <!-- Menu grid -->
+    <div id="menuContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <!-- Buttons injected by JS -->
     </div>
+  </div>
+
+  <script>
+    const menuItems = [
+      {
+        title: "Map View",
+        url: "https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-1",
+        colorClass: "btn-purple",
+      },
+      {
+        title: "Dashboard",
+        url: "https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-2",
+        colorClass: "btn-blue",
+      },
+      {
+        title: "Weather.gov",
+        url: "https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-3",
+        colorClass: "btn-green",
+      }
+    ];
+
+    function renderMenu(items) {
+      const container = document.getElementById('menuContainer');
+      container.innerHTML = '';
+      items.forEach(item => {
+        const btn = document.createElement('a');
+        btn.href = item.url;
+        btn.target = "_blank";
+        btn.className = `btn ${item.colorClass}`;
+        btn.setAttribute("data-title", item.title.toLowerCase());
+        btn.textContent = item.title;
+        container.appendChild(btn);
+      });
+    }
+
+    // Initial render
+    renderMenu(menuItems);
+
+    // Search logic
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const term = this.value.toLowerCase();
+      const filtered = menuItems.filter(item => item.title.toLowerCase().includes(term));
+      renderMenu(filtered);
+    });
+  </script>
 </body>
 </html>
