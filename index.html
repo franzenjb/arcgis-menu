@@ -35,29 +35,55 @@
     .btn-blue:hover { background-color: #2980b9; }
     .btn-green { background-color: #27ae60; }
     .btn-green:hover { background-color: #2ecc71; }
+
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 2rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">ArcGIS Menu Test</h1>
+    <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">ArcGIS Menu Test</h1>
 
-    <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840?page=page_1" 
-       target="_top" 
-       class="button-link btn-purple">
-       Test Page 1
-    </a>
+    <input type="text" id="searchInput" class="search-input" placeholder="Search menu...">
 
-    <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840?page=page_2" 
-       target="_top" 
-       class="button-link btn-blue">
-       Test Page 2
-    </a>
+    <div id="menuButtons">
+      <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840?page=page_1" 
+         target="_top" 
+         class="button-link btn-purple">
+         Test Page 1
+      </a>
 
-    <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840?page=page_3" 
-       target="_top" 
-       class="button-link btn-green">
-       Test Page 3
-    </a>
+      <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840?page=page_2" 
+         target="_top" 
+         class="button-link btn-blue">
+         Test Page 2
+      </a>
+
+      <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840?page=page_3" 
+         target="_top" 
+         class="button-link btn-green">
+         Test Page 3
+      </a>
+    </div>
   </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const menuButtons = document.querySelectorAll('#menuButtons a');
+
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.toLowerCase();
+      menuButtons.forEach(btn => {
+        const text = btn.textContent.toLowerCase();
+        btn.style.display = text.includes(term) ? 'block' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
