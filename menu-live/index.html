@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ArcGIS Menu Test</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: #f8fafc;
+    }
+    .container {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .button-link {
+      display: block;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      color: white;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-purple { background-color: #8e44ad; }
+    .btn-purple:hover { background-color: #9b59b6; }
+    .btn-blue { background-color: #3498db; }
+    .btn-blue:hover { background-color: #2980b9; }
+    .btn-green { background-color: #27ae60; }
+    .btn-green:hover { background-color: #2ecc71; }
+
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 2rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">ArcGIS Menu Test</h1>
+
+    <input type="text" id="searchInput" class="search-input" placeholder="Search menu...">
+
+    <div id="menuButtons">
+      <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-1" 
+         target="_parent" 
+         class="button-link btn-purple">
+         Page 1
+      </a>
+
+      <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-2" 
+         target="_parent" 
+         class="button-link btn-blue">
+         Page 2
+      </a>
+
+      <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-3" 
+         target="_parent" 
+         class="button-link btn-green">
+         Page 3
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const menuButtons = document.querySelectorAll('#menuButtons a');
+
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.toLowerCase();
+      menuButtons.forEach(btn => {
+        const text = btn.textContent.toLowerCase();
+        btn.style.display = text.includes(term) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
 
