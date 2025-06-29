@@ -5,22 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ArcGIS Menu - Professional Grid</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f9f9f9;
-      color: #1a1a1a;
+      color: #2C3E50;
     }
     .menu-button {
-      @apply text-white text-sm font-medium py-4 px-4 rounded-2xl shadow transition duration-200 ease-in-out hover:shadow-lg hover:scale-105;
+      @apply text-white text-sm font-semibold py-3 px-4 rounded-2xl shadow-sm transition duration-150 ease-in-out hover:shadow-md hover:scale-[1.025];
     }
-    .btn-purple { background-color: #6b21a8; }
-    .btn-blue { background-color: #2563eb; }
-    .btn-green { background-color: #16a34a; }
-    .btn-orange { background-color: #ea580c; }
-    .btn-red { background-color: #dc2626; }
-    .btn-black { background-color: #1f2937; }
+    .btn-purple { background-color: #4B0082; }
+    .btn-blue { background-color: #003366; }
+    .btn-green { background-color: #1B5E20; }
+    .btn-orange { background-color: #D35400; }
+    .btn-red { background-color: #B22222; }
+    .btn-black { background-color: #2C3E50; }
     .search-input {
       width: 100%;
       padding: 0.75rem 1rem;
@@ -29,28 +28,28 @@
       border-radius: 0.75rem;
       font-size: 1rem;
     }
+    .search-input:focus {
+      outline: none;
+      border-color: #003366;
+      box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.2);
+    }
   </style>
 </head>
 <body class="p-6">
   <div class="max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold text-gray-800 text-center mb-6">National Operations Menu</h1>
+    <h1 class="text-3xl font-bold text-gray-900 text-center mb-6">National Operations Menu</h1>
     <input type="text" id="menuSearch" class="search-input" placeholder="Search menu items...">
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="menuGrid">
       <!-- Buttons will be populated here -->
     </div>
   </div>
-  
+
   <script>
     const menuItems = [
       { title: "Page 1 - Map", url: "https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-1", colorClass: "btn-purple" },
       { title: "Page 2 - Dashboard", url: "https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-2", colorClass: "btn-blue" },
       { title: "Page 3 - Weather.gov", url: "https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840/page/Page-3", colorClass: "btn-green" },
-      // Additional placeholder buttons for visual layout
-      ...Array.from({length: 36}, (_, i) => ({
-        title: `Placeholder ${i + 4}`,
-        url: "#",
-        colorClass: ["btn-purple","btn-blue","btn-green","btn-orange","btn-red","btn-black"][i % 6]
-      }))
+      // Future buttons...
     ];
 
     const menuGrid = document.getElementById("menuGrid");
