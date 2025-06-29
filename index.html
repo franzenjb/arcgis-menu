@@ -26,8 +26,30 @@
   </style>
 </head>
 <body>
-  <h1>ArcGIS Tools</h1>
-  <a href="https://arcg.is/0abcd" target="_blank">Disaster Dashboard</a>
-  <a href="https://arcg.is/0wxyz" target="_blank">Shelter Map</a>
+ <body>
+  <h1>ArcGIS Tools (Dynamic)</h1>
+  <div id="menu">Loading...</div>
+
+  <script>
+    fetch('menu.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('menu');
+        container.innerHTML = ''; // clear loading text
+        data.forEach(item => {
+          const link = document.createElement('a');
+          link.href = item.url;
+          link.textContent = item.title;
+          link.target = "_blank";
+          container.appendChild(link);
+        });
+      })
+      .catch(error => {
+        document.getElementById('menu').innerText = 'Failed to load menu.';
+        console.error(error);
+      });
+  </script>
+</body>
+
 </body>
 </html>
