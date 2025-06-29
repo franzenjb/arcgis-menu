@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ArcGIS Menu (Live)</title>
+  <title>ArcGIS Menu</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -11,14 +11,14 @@
       background-color: #f8fafc;
     }
     .container {
-      max-width: 800px;
+      max-width: 700px;
       margin: 3rem auto;
       padding: 2rem;
       background: #fff;
       border-radius: 1rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
-    .button-link {
+    .btn {
       display: block;
       margin-bottom: 1rem;
       padding: 1rem;
@@ -27,7 +27,7 @@
       border-radius: 0.5rem;
       color: white;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: background 0.2s ease;
     }
     .btn-purple { background-color: #8e44ad; }
     .btn-purple:hover { background-color: #9b59b6; }
@@ -36,11 +36,11 @@
     .btn-green { background-color: #27ae60; }
     .btn-green:hover { background-color: #2ecc71; }
 
-    .search-input {
+    .search {
       width: 100%;
       padding: 0.75rem 1rem;
       margin-bottom: 2rem;
-      border: 1px solid #d1d5db;
+      border: 1px solid #ccc;
       border-radius: 0.5rem;
       font-size: 1rem;
     }
@@ -48,49 +48,49 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Live JSON-Driven Menu</h1>
+    <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">ArcGIS EB Menu</h1>
 
-    <input type="text" id="searchInput" class="search-input" placeholder="Search menu...">
-    <div id="menuButtons"></div>
+    <input type="text" id="searchInput" class="search" placeholder="Search..." />
+    <div id="menu"></div>
   </div>
 
   <script>
-    const menuContainer = document.getElementById('menuButtons');
-    const searchInput = document.getElementById('searchInput');
-    let allItems = [];
+    const container = document.getElementById("menu");
+    const searchInput = document.getElementById("searchInput");
+    let allLinks = [];
 
-    function renderButtons(items) {
-      menuContainer.innerHTML = '';
-      items.forEach(item => {
-        const a = document.createElement('a');
+    function renderLinks(list) {
+      container.innerHTML = "";
+      list.forEach(item => {
+        const a = document.createElement("a");
         a.textContent = item.title;
-        a.className = `button-link ${item.colorClass}`;
         a.href = "#";
-        a.onclick = (e) => {
+        a.className = `btn ${item.colorClass}`;
+        a.onclick = e => {
           e.preventDefault();
           window.top.location.href = item.url;
         };
-        menuContainer.appendChild(a);
+        container.appendChild(a);
       });
     }
 
-    searchInput.addEventListener('input', () => {
-      const term = searchInput.value.toLowerCase();
-      const filtered = allItems.filter(item =>
-        item.title.toLowerCase().includes(term)
+    searchInput.addEventListener("input", () => {
+      const val = searchInput.value.toLowerCase();
+      const filtered = allLinks.filter(link =>
+        link.title.toLowerCase().includes(val)
       );
-      renderButtons(filtered);
+      renderLinks(filtered);
     });
 
-    fetch('menu.json')
+    fetch("menu.json")
       .then(res => res.json())
       .then(data => {
-        allItems = data;
-        renderButtons(data);
+        allLinks = data;
+        renderLinks(data);
       })
       .catch(err => {
-        menuContainer.innerHTML = `<p class="text-red-600">Error loading menu.json</p>`;
-        console.error(err);
+        container.innerHTML = "<p style='color:red;'>Failed to load menu</p>";
+        console.error("JSON load error:", err);
       });
   </script>
 </body>
