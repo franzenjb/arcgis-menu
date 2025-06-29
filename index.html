@@ -1,70 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ArcGIS Menu (Test)</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ArcGIS Menu Test</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-  <style>
-  body {
-    font-family: Helvetica, Arial, sans-serif;
-    background: #f8f8f8;
-    padding: 40px;
-    margin: 0;
-    color: #333;
-  }
-
-  h1 {
-    color: #990000;
-    font-size: 32px;
-    margin-bottom: 30px;
-  }
-
-  #menu a {
-    display: block;
-    margin: 12px 0;
-    padding: 12px 16px;
-    font-size: 18px;
-    color: #003366;
-    text-decoration: none;
-    background: #ffffff;
-    border-left: 5px solid #990000;
-    box-shadow: 1px 1px 4px rgba(0,0,0,0.05);
-    transition: background 0.3s, transform 0.2s;
-  }
-
-  #menu a:hover {
-    background: #f2f2f2;
-    transform: translateX(5px);
-  }
-</style>
-
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: #f8fafc;
+    }
+    .container {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .button-link {
+      display: block;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      color: white;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-purple { background-color: #8e44ad; }
+    .btn-purple:hover { background-color: #9b59b6; }
+    .btn-blue { background-color: #3498db; }
+    .btn-blue:hover { background-color: #2980b9; }
+    .btn-green { background-color: #27ae60; }
+    .btn-green:hover { background-color: #2ecc71; }
   </style>
 </head>
 <body>
- <body>
-  <h1>ArcGIS Tools (Dynamic)</h1>
-  <div id="menu">Loading...</div>
+  <div class="container">
+    <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">ArcGIS Menu Test</h1>
 
-  <script>
-    fetch('menu.json')
-      .then(response => response.json())
-      .then(data => {
-        const container = document.getElementById('menu');
-        container.innerHTML = ''; // clear loading text
-        data.forEach(item => {
-          const link = document.createElement('a');
-          link.href = item.url;
-          link.textContent = item.title;
-          link.target = "_blank";
-          container.appendChild(link);
-        });
-      })
-      .catch(error => {
-        document.getElementById('menu').innerText = 'Failed to load menu.';
-        console.error(error);
-      });
-  </script>
-</body>
+    <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840?page=page_1" 
+       target="_top" 
+       class="button-link btn-purple">
+       Test Page 1
+    </a>
 
+    <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840?page=page_2" 
+       target="_top" 
+       class="button-link btn-blue">
+       Test Page 2
+    </a>
+
+    <a href="https://experience.arcgis.com/experience/5fe03ba17718414283e65b647a246840?page=page_3" 
+       target="_top" 
+       class="button-link btn-green">
+       Test Page 3
+    </a>
+  </div>
 </body>
 </html>
